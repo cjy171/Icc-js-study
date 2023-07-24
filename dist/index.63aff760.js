@@ -574,22 +574,14 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"adjPd":[function(require,module,exports) {
-const obj = {
-    a: 1,
-    b: 2,
-    c: 3
+const user = {
+    name: "최",
+    age: 21
 };
-const { a, b } = obj;
-console.log(a, b) // 1 2
-;
-const { x = 4 } = obj;
-console.log(x) // 4
-;
-const { c: test } = obj;
-console.log(test) // 3
-;
-const { c, ...rest } = obj;
-console.log(c, rest);
+function getTel({ tel = "010-" }) {
+    return tel;
+}
+console.log(getTel(user));
 
 },{}]},["lmKb7","adjPd"], "adjPd", "parcelRequire5338")
 
