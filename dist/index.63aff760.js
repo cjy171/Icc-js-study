@@ -574,41 +574,55 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"adjPd":[function(require,module,exports) {
-class Kpop {
-    constructor(){
-        this.singerName = "";
-        this.releaseDate = "";
-        this.members = "";
+const users = [
+    {
+        name: "윤병현",
+        age: 24,
+        class: "1반"
+    },
+    {
+        name: "문채현",
+        age: 22,
+        class: "1반"
+    },
+    {
+        name: "최진영",
+        age: 21,
+        class: "2반"
+    },
+    {
+        name: "이윤수",
+        age: 20,
+        class: "2반"
     }
-    set(value) {
-        [this.singerName, this.releaseDate, this.members] = value.split(" ");
-    }
-    reset(value) {
-        this.singerName = "";
-        this.releaseDate = "";
-        this.members = "";
-        return `${this.singerName} ${this.releaseDate} ${this.members}`;
-    }
-}
-const k_pop = new Kpop("가수 이름", "발매일", "멤버 수");
-class ETA extends Kpop {
-    constructor(singerName, releaseDate, members, leaderName){
-        super(singerName, releaseDate, members);
-        this.singerName = singerName;
-        this.releaseDate = releaseDate;
-        this.members = members;
-        this.leaderName = leaderName;
-    }
-    sing() {
-        console.log("We can go wherever you like");
-    }
-}
-const eta = new ETA("ETA", "2023.07.21", "5", "minji");
-k_pop.set = "singerName releaseDate members";
-console.log(k_pop);
-eta.sing();
-console.log(eta);
-console.log(eta.reset);
+];
+const userData = users.filter((users)=>{
+    return users.age > 21 && users.class === "1반";
+});
+console.log(userData);
+const userData1 = users.map((user)=>{
+    if (user.name === "윤병현") return {
+        ...user,
+        email: "ywy040150@gmail.com",
+        tel: "010-1234-5678"
+    };
+    else if (user.name === "문채현") return {
+        ...user,
+        email: "moon1111@gmail.com",
+        tel: "010-1111-1111"
+    };
+    else if (user.name === "최진영") return {
+        ...user,
+        email: "choi2222@gmail.com",
+        tel: "010-2222-2222"
+    };
+    else if (user.name === "이윤수") return {
+        ...user,
+        email: "yoon3333@gmail.com",
+        tel: "010-3333-3333"
+    };
+});
+console.log(userData1);
 
 },{}]},["lmKb7","adjPd"], "adjPd", "parcelRequire5338")
 
