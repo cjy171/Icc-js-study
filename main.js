@@ -1,42 +1,27 @@
-const users = [
-	{name: '윤병현', age: 24, class: '1반'},
-	{name: '문채현',  age: 22, class: '1반'},
-	{name: '최진영',  age: 21, class: '2반'},
-  {name: '이윤수', age: 20, class: '2반'}
-]
+const getMovies = movieName =>{
+	return new Promise((resolve, reject) => {
+		fetch(`http://www.omdbapi.com/?apikey=7035c60c&s=${movieName}`)
+			.then(res => res.json())
+			.then(res => {
+				console.log(res)
+				if(res.Response === 'False'){
+					reject(res.Error)
+				}
+				resolve(res)
+	})
+	})
+}
 
-const userData = users.filter(users => {
-	return users.age > 21 && users.class === '1반'
-})
-console.log(userData)
 
-const userData1 = users.map(user => {
-	if(user.name === '윤병현'){
-		return{
-			...user,
-			email: "ywy040150@gmail.com",
-			tel: '010-1234-5678'
-		}
-	} else if(user.name === '문채현'){
-		return{
-			...user,
-			email: "moon1111@gmail.com",
-			tel: '010-1111-1111'
-		}
-	} else if(user.name === '최진영'){
-		return{
-			...user,
-			email: "choi2222@gmail.com",
-			tel: '010-2222-2222'
-		}
-	} else if(user.name === '이윤수'){
-		return{
-			...user,
-			email: "yoon3333@gmail.com",
-			tel: '010-3333-3333'
-		}
+const wrap = async () => {
+	try{
+		const movies = await getMovies(avengers)
+		console.log('영화 목록:' , movies)
+	}catch(error){
+		console.error('에러 발생:' , error)
+	}finally{
+		console.log('END')
 	}
-	
-})
+}
 
-console.log(userData1)
+wrap()
